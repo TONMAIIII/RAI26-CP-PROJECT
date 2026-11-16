@@ -227,7 +227,7 @@ Check sensor readings, motor directions, wall tracking, and buzzer functionality
 <h3 align="center">Auto Robot Design</h3>
 
 <p align="center">
-  <img src="assets/robot.jpg" width="100%" alt="Robot Design">
+  <img src="assets/4v_auto.png" width="100%" alt="Robot Design">
 </p>
 
 ## 🚀 Future Improvements

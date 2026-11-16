@@ -1,4 +1,4 @@
-# 🤖 RAI26 – Robotics Competition Project
+# 🤖 RAI – Robotics Competition AY26/S1 Project
 
 <p align="center">   
   <img src="https://img.shields.io/badge/RAI-2026-blue?style=for-the-badge" />   

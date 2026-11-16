@@ -1,5 +1,4 @@
-#include <math.h>
-
+// ---------------- Pins (must come BEFORE robot.h) ----------------
 #define ENA 11
 #define IN1 10
 #define IN2 8
@@ -15,11 +14,13 @@
 #define BZ_A 7
 #define BZ_B 12
 
-int lastErrorL = 0;
-int lastErrorR = 0;
+#include "robot.h"
 
-int Position = 0, errorL = 0, errorR = 0;
-int PowerMotor = 0, LeftMotor = 0, RightMotor = 0;
+// ---------------- Sensor data structure ----------------
+typedef struct {
+  int rawL, rawF, rawR, rawM;   
+  int cmL, cmF, cmR;            
+} SensorData;
 
 void setup() {
   Serial.begin(9600);
@@ -51,7 +52,7 @@ void loop() {
     if (Read_Eye(LSensor) <= 5) {
       beep(1, 100); delay(1000);
       while (analogRead(MSensor) > 450) Track_wall_L();
-      MotorControl(0, 0); while(1);
+      MotorControl(0, 0); while (1);
     }
   }
 
@@ -60,107 +61,36 @@ void loop() {
     if (Read_Eye(RSensor) <= 5) {
       beep(2, 100); delay(1000);
       while (analogRead(MSensor) > 450) Track_wall_R();
-      MotorControl(0, 0); while(1);
+      MotorControl(0, 0); while (1);
     }
   }
 }
 
-void setMotor(int pwm, int pin1, int pin2, int speed) {
-  speed = constrain(speed, -255, 255);
-  digitalWrite(pin1, speed > 0 ? HIGH : LOW);
-  digitalWrite(pin2, speed < 0 ? HIGH : LOW);
-  analogWrite(pwm, abs(speed));
-}
+void readSensors(SensorData *s) {
+  s->rawL = analogRead(LSensor);
+  s->rawF = analogRead(FSensor);
+  s->rawR = analogRead(RSensor);
+  s->rawM = analogRead(MSensor);
 
-void MotorControl(int left, int right) {
-  setMotor(ENA, IN1, IN2, left);
-  setMotor(ENB, IN3, IN4, -right);
-}
-
-int Read_Eye(int pin) {
-  float voltage = analogRead(pin) * (5.0 / 1023.0);
-  if (voltage <= 0) return 30;
-  float distance = 12.64 * pow(voltage, -1.04);
-  return constrain(distance, 4.0, 30.0);
-}
-
-void Track_wall_L() {
-  int front = Read_Eye(FSensor);
-  int left = Read_Eye(LSensor);
-
-  if (front <= 8 && left < 20) { MotorControl(150, -255); delay(20); }
-  else {
-    track_left_no_lip(200, 30, 25, 9);
-    // track_left_no_lip(255, 50, 25, 9);
-    if (analogRead(RSensor) >= 450) { MotorControl(-120, 120); delay(10); }
-  }
-  MotorControl(LeftMotor, RightMotor);
-  delay(10);
-}
-
-void Track_wall_R() {
-  int front = Read_Eye(FSensor);
-  int right = Read_Eye(RSensor);
-
-  if (front <= 8 && right < 20) { MotorControl(-255, 150); delay(20); }
-  else {
-    track_right_no_lip(200, 30, 25, 9);
-    // track_right_no_lip(255, 50, 25, 9);
-    if (analogRead(LSensor) >= 450) { MotorControl(120, -120); delay(10); }
-  }
-  MotorControl(LeftMotor, RightMotor);
-  delay(10);
-}
-
-void track_left_no_lip(int BaseSpeed, float Kp, float Kd, int Target) {
-  Position = Read_Eye(LSensor);
-  errorL = Position - Target;
-
-  if (lastErrorL - errorL > 8) lastErrorL = errorL;
-
-  PowerMotor = (Kp * errorL) + (Kd * (errorL - lastErrorL));
-  lastErrorL = errorL;
-
-  PowerMotor = constrain(PowerMotor, -80, BaseSpeed);
-
-  LeftMotor = BaseSpeed - PowerMotor;
-  RightMotor = BaseSpeed + PowerMotor;
-
-  if (LeftMotor >= 255) LeftMotor = 225;
-  if (LeftMotor <= 0) LeftMotor = 0;
-  if (RightMotor >= 255) RightMotor = 255;
-  if (RightMotor <= 0) RightMotor = 0;
-}
-
-void track_right_no_lip(int BaseSpeed, float Kp, float Kd, int Target) {
-  Position = Read_Eye(RSensor);
-  errorR = Position - Target;
-
-  if (lastErrorR - errorR > 8) lastErrorR = errorR;
-
-  PowerMotor = (Kp * errorR) + (Kd * (errorR - lastErrorR));
-  lastErrorR = errorR;
-
-  PowerMotor = constrain(PowerMotor, -80, BaseSpeed);
-
-  LeftMotor = BaseSpeed + PowerMotor;
-  RightMotor = BaseSpeed - PowerMotor;
-
-  if (LeftMotor >= 255) LeftMotor = 225;
-  if (LeftMotor <= 0) LeftMotor = 0;
-  if (RightMotor >= 255) RightMotor = 255;
-  if (RightMotor <= 0) RightMotor = 0;
+  s->cmL = Read_Eye(LSensor);
+  s->cmF = Read_Eye(FSensor);
+  s->cmR = Read_Eye(RSensor);
 }
 
 void view() {
+  SensorData data;
+  SensorData *p = &data;
+
   while (true) {
-    Serial.print("\tL    : "); Serial.print(analogRead(LSensor)); Serial.print("\t");
-    Serial.print("\tF    : "); Serial.print(analogRead(FSensor)); Serial.print("\t");
-    Serial.print("\tR    : "); Serial.print(analogRead(RSensor)); Serial.print("\t");
-    Serial.print("\tM    : "); Serial.println(analogRead(MSensor));
-    Serial.print("\tL-CM : "); Serial.print(Read_Eye(LSensor)); Serial.print("\t");
-    Serial.print("\tF-CM : "); Serial.print(Read_Eye(FSensor)); Serial.print("\t");
-    Serial.print("\tR-CM : "); Serial.println(Read_Eye(RSensor));
+    readSensors(p);
+
+    Serial.print("\tL    : "); Serial.print(p->rawL); Serial.print("\t");
+    Serial.print("\tF    : "); Serial.print(p->rawF); Serial.print("\t");
+    Serial.print("\tR    : "); Serial.print(p->rawR); Serial.print("\t");
+    Serial.print("\tM    : "); Serial.println(p->rawM);
+    Serial.print("\tL-CM : "); Serial.print(p->cmL); Serial.print("\t");
+    Serial.print("\tF-CM : "); Serial.print(p->cmF); Serial.print("\t");
+    Serial.print("\tR-CM : "); Serial.println(p->cmR);
     Serial.println("\t----------------------------------------------------------------------------------");
     delay(1000);
   }

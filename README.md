@@ -298,16 +298,13 @@ The program handles sensor readings, motor control, wall tracking, obstacle dete
 RAI26-CP-PROJECT/
 │
 ├── Manual-Robot/
-│   └── Manual_Robot.mblock
+│   └── rai_manual.mblock
 │
 ├── Autonomous-Robot/
-│   └── RAI_COMPRO_AUTO.ino
+│   └── auto.ino
 │
 ├── assets/
 │   ├── 4v_auto.png
-│   ├── manual_robot.png
-│   ├── circuit_diagram.png
-│   └── testing/
 │
 ├── README.md
 │

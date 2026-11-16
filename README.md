@@ -224,7 +224,11 @@ Check sensor readings, motor directions, wall tracking, and buzzer functionality
 &#x20; <i>Project photos, circuit diagrams, and testing videos will be added here.</i>
 </p>
 
-\<!-- Add project photos here when available -->
+<h3 align="center">Auto Robot Design</h3>
+
+<p align="center">
+  <img src="assets/robot.jpg" width="100%" alt="Robot Design">
+</p>
 
 ## 🚀 Future Improvements
 

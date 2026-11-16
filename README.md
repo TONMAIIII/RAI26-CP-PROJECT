@@ -129,7 +129,7 @@ To open the project:
 
 **Project file:** `Manual_Robot.mblock` (update to the actual filename).
 
-\</details>
+</details>
 
 ---
 

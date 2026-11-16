@@ -4,7 +4,7 @@ import gamepad
 import time
 
 DEADZONE = 10      # Ignore small stick drift near center (-10 to 10)
-MAX_RPM = 150      # Max encoder motor speed (up to 200 RPM)
+MAX_RPM = 130      # Max encoder motor speed (up to 200 RPM)
 SHAFT_POWER = 100   # M1 motor power for shaft up/down (0 to 100)
 
 # Logical limits for S1 & S3 (S3 physical angle = 180 - s3_pos, so 58 to 150)
@@ -26,6 +26,7 @@ l1_prev = False
 l2_prev = False
 r1_prev = False
 r2_prev = False
+left_prev = False
 
 def apply_deadzone(value, deadzone=DEADZONE):
     if abs(value) < deadzone:
@@ -88,10 +89,10 @@ while True:
     n4_prev = n4_now
 
     # --- 5. Individual Open/Close: 10 deg per click (L1/L2 for S3, R1/R2 for S1) ---
-    l1_now = gamepad.is_key_pressed("L1")
-    l2_now = gamepad.is_key_pressed("L2")
-    r1_now = gamepad.is_key_pressed("R1")
-    r2_now = gamepad.is_key_pressed("R2")
+    l1_now = gamepad.is_key_pressed("L2")
+    l2_now = gamepad.is_key_pressed("L1")
+    r1_now = gamepad.is_key_pressed("R2")
+    r2_now = gamepad.is_key_pressed("R1")
 
     if l1_now and not l1_prev:             # L1 clicked -> Open S3 (+10 deg)
         s3_pos = min(SERVO_MAX, s3_pos + 10)
@@ -113,5 +114,7 @@ while True:
     l2_prev = l2_now
     r1_prev = r1_now
     r2_prev = r2_now
+    
+
 
     time.sleep(0.02)

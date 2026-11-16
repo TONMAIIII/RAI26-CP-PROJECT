@@ -1,6 +1,10 @@
 # 🤖 RAI26 – Autonomous Robot
 
-<p align="center">   <img src="[https://img.shields.io/badge/RAI-2026-blue?style=for-the-badge](https://img.shields.io/badge/RAI-2026-blue?style=for-the-badge)" />   <img src="[https://img.shields.io/badge/Platform-Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white](https://img.shields.io/badge/Platform-Arduino-00979D?style=for-the-badge\&logo=arduino\&logoColor=white)" />   <img src="[https://img.shields.io/badge/Language-C%2B%2B-00599C?style=for-the-badge&logo=cplusplus&logoColor=white](https://img.shields.io/badge/Language-C%2B%2B-00599C?style=for-the-badge\&logo=cplusplus\&logoColor=white)" />   <img src="[https://img.shields.io/badge/Status-Development-orange?style=for-the-badge](https://img.shields.io/badge/Status-Development-orange?style=for-the-badge)" /> </p>
+<p align="center">
+  <img src="https://img.shields.io/badge/RAI-2026-blue?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Arduino-00979D?style=for-the-badge&logo=arduino&logoColor=white" />
+  <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white" />
+</p>
 
 <p align="center">   An autonomous robotics project developed for the RAI 2026 Computer Programming Competition.   <br>   Designed to perform wall tracking, distance detection, and autonomous movement using Arduino-based control systems. </p>
 
@@ -235,9 +239,6 @@ Check sensor readings, motor directions, wall tracking, and buzzer functionality
 
 <p align="center">   Developed for the <b>RAI 2026 Computer Programming Competition</b>. </p>
 
-| Contributor | Role                               |
-| :---------- | :--------------------------------- |
-| TONMAIIII   | Robotics Programming & Development |
 
 ## 📄 License
 

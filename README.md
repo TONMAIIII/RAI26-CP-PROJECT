@@ -239,6 +239,11 @@ Check sensor readings, motor directions, wall tracking, and buzzer functionality
 
 <p align="center">   Developed for the <b>RAI 2026 Computer Programming Competition</b>. </p>
 
+| Contributor | Role                               |
+| :---------- | :--------------------------------- |
+| Mr. Yossarun Junkhiew    | Robotics Programming & Development |
+| Mr. Nopasin Plailaharn   | Robotics Programming & Development |
+| Mr. Kittipat Srilekart   | Robotics Programming & Development |
 
 ## 📄 License
 

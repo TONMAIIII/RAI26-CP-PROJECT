@@ -16,6 +16,8 @@
 
 #include "robot.h"
 
+int F[3] = {A0,A1,A2};  // left, right, front
+
 // ---------------- Sensor data structure ----------------
 typedef struct {
   int rawL, rawF, rawR, rawM;   

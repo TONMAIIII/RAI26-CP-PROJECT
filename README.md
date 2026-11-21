@@ -18,7 +18,7 @@
 
 The project consists of two robotic systems designed to demonstrate different approaches to robotic movement, control, and navigation.
 
-## Report - 
+## Report - https://github.com/TONMAIIII/RAI26-CP-PROJECT/blob/main/Compro2026Report.pdf
 
 ### 🤖 Robot Systems
 

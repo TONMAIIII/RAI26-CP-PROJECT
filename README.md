@@ -436,7 +436,7 @@ Project photos, circuit diagrams, hardware configurations, and testing videos wi
 <h3 align="center">Manual Robot Design</h3>
 
 <p align="center">
-&#x20; <img src="assets/manual_robot.png" width="100%" alt="Manual Robot Design">
+&#x20; <img src="assets/manual.png" width="100%" alt="Manual Robot Design">
 </p>
 
 <p align="center">

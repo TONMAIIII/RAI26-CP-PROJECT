@@ -288,7 +288,7 @@ The program handles sensor readings, motor control, wall tracking, obstacle dete
 
 **Project file:** `RAI_COMPRO_AUTO.ino`
 
-\</details>
+</details>
 
 ---
 

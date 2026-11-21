@@ -127,7 +127,7 @@ To open the project:
 4. Select the correct device and communication port.
 5. Upload or run the program according to the controller's supported mode.
 
-**Project file:** `Manual_Robot.mblock` (update to the actual filename).
+**Project file:** `rai_manual.mblock` 
 
 </details>
 
@@ -298,20 +298,20 @@ The program handles sensor readings, motor control, wall tracking, obstacle dete
 RAI26-CP-PROJECT/
 │
 ├── Manual-Robot/
-│   └── rai_manual.mblock
+│   ├── rai_manual.mblock
+│   └── rai_manual.py
 │
 ├── Autonomous-Robot/
 │   └── auto.ino
 │
 ├── assets/
 │   ├── 4v_auto.png
+│   └── manual.png
 │
 ├── README.md
 │
 └── LICENSE
 ```
-
-*Update the filenames and folder structure to match the actual repository.*
 
 ---
 
@@ -429,7 +429,7 @@ Check sensor readings, motor directions, wall tracking, and buzzer functionality
 
 # 📸 Project Gallery
 
-Project photos, circuit diagrams, hardware configurations, and testing videos will be added here.
+Project photos, hardware configurations.
 
 ## Manual Robot
 
@@ -455,45 +455,9 @@ Project photos, circuit diagrams, hardware configurations, and testing videos wi
 &#x20; <i>Autonomous Robot design and hardware configuration.</i>
 </p>
 
-## Circuit Diagrams
-
-<p align="center">
-&#x20; <img src="assets/circuit_diagram.png" width="100%" alt="Robot Circuit Diagram">
-</p>
-
-*Circuit diagrams and wiring documentation will be added when available.*
-
-## Testing & Demonstrations
-
-- Manual Robot movement demonstration
-- Autonomous wall-following demonstration
-- Sensor testing
-- Motor control testing
-- Competition preparation
-
-*Testing videos will be added here.*
-
 ---
 
 # 🚀 Future Improvements
-
-## Manual Robot
-
-- Improve wireless communication stability.
-- Optimize movement response time.
-- Improve motor speed control.
-- Improve turning accuracy.
-- Implement additional control functions.
-- Perform extensive real-world testing.
-
-## Autonomous Robot
-
-- Improve sensor calibration and distance accuracy.
-- Optimize PD control parameters.
-- Improve obstacle avoidance.
-- Reduce unnecessary motor delays.
-- Improve navigation stability.
-- Perform extensive real-world testing.
 
 ---
 
